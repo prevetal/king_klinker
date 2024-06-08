@@ -232,7 +232,7 @@ button
 }
 
 
-.main
+.wrap > .main
 {
     display: flex;
     flex: 1 0 auto;
@@ -302,6 +302,7 @@ button
 
 .block.bg_white
 {
+    margin-bottom: 0;
     padding: 70px 0;
 
     background: #fff;
@@ -476,6 +477,169 @@ button
     width: 14px;
     height: 13px;
     margin-left: 12px;
+}
+
+
+
+/*----------
+    Tabs
+----------*/
+.tabs
+{
+    display: flex;
+    align-content: stretch;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+.tab_content
+{
+    position: relative;
+
+    visibility: hidden;
+    overflow: hidden;
+
+    height: 0;
+
+    pointer-events: none;
+
+    opacity: 0;
+}
+
+.tab_content.active
+{
+    visibility: visible;
+    overflow: visible;
+
+    height: auto;
+
+    transition: opacity .5s linear;
+    pointer-events: auto;
+
+    opacity: 1;
+}
+
+
+
+/*----------------
+    Pagination
+----------------*/
+.pagination
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    margin-top: 32px;
+}
+
+
+.pagination > * + *
+{
+    margin-left: 4px;
+}
+
+
+.pagination a
+{
+    line-height: 40px;
+
+    display: inline-block;
+
+    width: 42px;
+    height: 42px;
+
+    transition: .2s linear;
+    text-align: center;
+    vertical-align: top;
+    text-decoration: none;
+
+    color: #191919;
+    border: 1px solid transparent;
+    background: #f2f2f2;
+}
+
+
+.pagination a:hover
+{
+    font-weight: 700;
+
+    color: #fff;
+    border-color: #828282;
+    background: #828282;
+}
+
+.pagination a.active
+{
+    border-color: #e5e0e0;
+    background: #fff;
+}
+
+
+.pagination .prev,
+.pagination .next
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    width: auto;
+
+    border: none;
+    background: none;
+}
+
+
+.pagination .prev
+{
+    margin-right: 26px;
+}
+
+.pagination .next
+{
+    margin-left: 30px;
+}
+
+
+.pagination .prev .icon,
+.pagination .next .icon
+{
+    display: block;
+
+    width: 7px;
+    height: 13px;
+
+    color: #828282;
+}
+
+
+.pagination .prev .icon
+{
+    margin-right: 12px;
+}
+
+
+.pagination .next .icon
+{
+    margin-left: 12px;
+
+    transform: rotate(180deg);
+}
+
+
+.pagination .prev:hover,
+.pagination .next:hover
+{
+    font-weight: 400;
+
+    color: #191919;
+    background: none;
 }
 
 
@@ -1002,9 +1166,25 @@ aside
 
 
 
+.page_sub_title
+{
+    font-size: 36px;
+    font-weight: 400;
+    line-height: normal;
+
+    margin-top: 24px;
+}
+
+
+
 .page_desc
 {
     margin-top: 32px;
+}
+
+.page_sub_title + .page_desc
+{
+    margin-top: 24px;
 }
 
 
@@ -1850,7 +2030,7 @@ aside
 /*--------------
     Articles
 --------------*/
-.articles
+.articles.bg
 {
     padding: 100px 0 88px;
 
@@ -1862,6 +2042,34 @@ aside
 .articles .swiper
 {
     overflow: visible !important;
+}
+
+
+.articles .row_wrap
+{
+    padding: 32px;
+
+    background: #fff;
+}
+
+
+.articles .row
+{
+    margin-bottom: -50px;
+    margin-left: -32px;
+}
+
+
+.articles .row > *
+{
+    width: calc(50% - 32px);
+    margin-bottom: 50px;
+    margin-left: 32px;
+}
+
+.articles .row > *.small
+{
+    width: calc(25% - 32px);
 }
 
 
@@ -1879,6 +2087,16 @@ aside
 
     color: currentColor;
     background: #ddd;
+}
+
+.articles .row .article .thumb
+{
+    margin-bottom: 16px;
+}
+
+.articles .article.small .thumb
+{
+    margin-bottom: 8px;
 }
 
 
@@ -1908,6 +2126,17 @@ aside
     color: #bdbdbd;
 }
 
+.articles .row .article .date
+{
+    font-weight: 500;
+
+    margin-bottom: 11px;
+
+    letter-spacing: .42px;
+
+    color: #828282;
+}
+
 
 .articles .article .name
 {
@@ -1917,14 +2146,42 @@ aside
 }
 
 
+.articles .row .article .name
+{
+    font-size: 22px;
+    line-height: 150%;
+
+    letter-spacing: .44px;
+}
+
+
+.articles .article.small .name
+{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 150%;
+
+    letter-spacing: .3px;
+}
+
+
 .articles .article .name a
 {
     display: inline-block;
 
+    transition: color .2s linear;
     vertical-align: top;
     text-decoration: none;
 
     color: currentColor;
+}
+
+
+.articles .article .name a:hover
+{
+    text-decoration: underline;
+
+    color: #ed1c24;
 }
 
 
@@ -2123,6 +2380,906 @@ aside
     height: 12px;
 
     color: #aeaeae;
+}
+
+
+
+/*------------------
+    Gallery info
+------------------*/
+.gallery_info .tabs .btn
+{
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 150%;
+
+    position: relative;
+
+    display: block;
+
+    padding: 10px 25px 19px;
+
+    transition: .2s linear;
+    letter-spacing: .34px;
+
+    color: #000;
+}
+
+.gallery_info .tabs .btn:hover,
+.gallery_info .tabs .btn.active
+{
+    color: #ed1c24;
+    background: #fff;
+}
+
+
+.gallery_info .tab_content
+{
+    background: #fff;
+}
+
+.gallery_info .tab_content.active
+{
+    padding: 65px 0 70px;
+}
+
+
+.gallery_info .row
+{
+    margin-bottom: -40px;
+    margin-left: -32px;
+}
+
+
+.gallery_info .row > *
+{
+    width: calc(50% - 32px);
+    margin-bottom: 40px;
+    margin-left: 32px;
+}
+
+
+.gallery_info .item
+{
+    line-height: 150%;
+
+    display: block;
+
+    text-decoration: none;
+    letter-spacing: .32px;
+
+    color: #4f4f4f;
+}
+
+
+.gallery_info .item .thumb
+{
+    position: relative;
+
+    overflow: hidden;
+
+    margin-bottom: 16px;
+    padding-bottom: 56.293%;
+
+    background: #ddd;
+}
+
+
+.gallery_info .item .thumb img
+{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+
+/*------------------
+    Catalog info
+------------------*/
+.catalog_info .row
+{
+    align-content: stretch;
+    align-items: stretch;
+
+    margin-bottom: -24px;
+    margin-left: -13px;
+}
+
+
+.catalog_info .row > *
+{
+    width: calc(20% - 13px);
+    margin-bottom: 24px;
+    margin-left: 13px;
+}
+
+
+.catalog_info .main a
+{
+    font-weight: 600;
+
+    display: block;
+
+    min-height: 140px;
+    padding: 15px 28px;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: #000;
+    background: #fff;
+}
+
+
+.catalog_info .main .icon
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    height: 58px;
+    margin-bottom: 12px;
+}
+
+
+.catalog_info .main .icon img
+{
+    display: block;
+
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.catalog_info .sub .label
+{
+    font-weight: 600;
+
+    padding: 13px 13px 14px;
+
+    text-align: center;
+
+    color: #fff;
+    background: #333;
+}
+
+
+.catalog_info .sub .list
+{
+    padding: 23px 20px 32px 15px;
+
+    background: #fff;
+}
+
+
+.catalog_info .sub .list .hide
+{
+    display: none;
+}
+
+
+.catalog_info .sub .list .hide,
+.catalog_info .sub .list .hide > * + *,
+.catalog_info .sub .list > * + *
+{
+    margin-top: 21px;
+}
+
+
+.catalog_info .sub .list a
+{
+    font-size: 15px;
+
+    position: relative;
+
+    display: block;
+
+    padding-left: 15px;
+
+    transition: color .2s linear;
+    text-decoration: none;
+
+    color: #191919;
+}
+
+
+.catalog_info .sub .list a:before
+{
+    position: absolute;
+    top: 8px;
+    left: 0;
+
+    display: block;
+
+    width: 4px;
+    height: 4px;
+
+    content: '';
+
+    background: #ed1c24;
+}
+
+
+.catalog_info .sub .list a:hover
+{
+    color: #ed1c24;
+}
+
+
+.catalog_info .spoler_btn
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 100%;
+    height: 29px;
+
+    color: #828282;
+    background: #f0f0f0;
+}
+
+
+.catalog_info .spoler_btn .icon
+{
+    display: block;
+
+    width: 13px;
+    height: 9px;
+
+    transition: transform .2s linear;
+}
+
+
+.catalog_info .spoler_btn .icon
+{
+    transform: rotate(180deg);
+}
+
+
+
+/*-------------------
+    Contacts info
+-------------------*/
+.contacts_info
+{
+    padding-bottom: 12px;
+}
+
+
+.contacts_info .row
+{
+    justify-content: space-between;
+}
+
+
+.contacts_info .item.border
+{
+    padding-left: 27px;
+
+    border-left: 5px solid #ed1c24;
+}
+
+
+.contacts_info .item .title
+{
+    font-size: 17px;
+    font-weight: 700;
+
+    margin-bottom: 14px;
+
+    letter-spacing: .51px;
+
+    color: #000;
+}
+
+
+.contacts_info .item .desc
+{
+    line-height: 150%;
+}
+
+
+.contacts_info .date_time > *
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    width: 196px;
+    max-width: 100%;
+
+    letter-spacing: .48px;
+
+    color: #000;
+}
+
+.contacts_info .date_time > * + *
+{
+    margin-top: 5px;
+}
+
+
+.contacts_info .date_time .days
+{
+    font-weight: 700;
+}
+
+
+.contacts_info .date_time .time
+{
+    font-weight: 500;
+}
+
+
+.contacts_info .item .phone
+{
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 27px;
+
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin-top: 24px;
+
+    color: #000;
+}
+
+
+.contacts_info .item .phone .icon
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 18px;
+    height: 19px;
+    margin-top: 4px;
+
+    color: #ed1c24;
+}
+
+
+.contacts_info .item .phone .icon svg
+{
+    display: block;
+
+    width: 15px;
+    height: 19px;
+}
+
+
+.contacts_info .item .phone .icon + *
+{
+    width: calc(100% - 28px);
+    margin-left: 10px;
+}
+
+
+.contacts_info .item .phone a
+{
+    white-space: nowrap;
+    text-decoration: none;
+
+    color: currentColor;
+}
+
+
+.contacts_info .item .phone .exp
+{
+    font-size: var(--font_size);
+    font-weight: 400;
+    line-height: 150%;
+
+    color: #828282;
+}
+
+
+.contacts_info .item .email
+{
+    line-height: 150%;
+
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin-top: 18px;
+
+    color: #000;
+}
+
+
+.contacts_info .item .email .icon
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 18px;
+    height: 15px;
+    margin-top: 6px;
+
+    color: #ed1c24;
+}
+
+
+.contacts_info .item .email .icon svg
+{
+    display: block;
+
+    width: 18px;
+    height: 15px;
+}
+
+
+.contacts_info .item .email .icon + *
+{
+    width: calc(100% - 28px);
+    margin-left: 10px;
+}
+
+
+.contacts_info .item .email  a
+{
+    white-space: nowrap;
+
+    color: currentColor;
+}
+
+
+.contacts_info .item .location
+{
+    line-height: 150%;
+
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin-top: 18px;
+
+    white-space: nowrap;
+
+    color: #000;
+}
+
+
+.contacts_info .item .location .icon
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+
+    color: #ed1c24;
+}
+
+
+.contacts_info .item .location .icon svg
+{
+    display: block;
+
+    width: 14px;
+    height: 18px;
+}
+
+
+.contacts_info .item .location .icon + *
+{
+    width: calc(100% - 28px);
+    margin-left: 10px;
+}
+
+
+.contacts_info .item .website
+{
+    line-height: 150%;
+
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin-top: 15px;
+
+    color: #000;
+}
+
+
+.contacts_info .item .website .icon
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 18px;
+    height: 16px;
+    margin-top: 6px;
+
+    color: #ed1c24;
+}
+
+
+.contacts_info .item .website .icon svg
+{
+    display: block;
+
+    width: 16px;
+    height: 16px;
+}
+
+
+.contacts_info .item .website .icon + *
+{
+    width: calc(100% - 28px);
+    margin-left: 10px;
+}
+
+
+.contacts_info .item .website  a
+{
+    white-space: nowrap;
+
+    color: currentColor;
+}
+
+
+
+/*-------------
+    Dealers
+-------------*/
+#dealers_map
+{
+    position: relative;
+
+    overflow: hidden;
+
+    height: 524px;
+    margin-bottom: 50px;
+
+    background: #ddd;
+}
+
+
+.dealers .tabs
+{
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin-bottom: 31px;
+    margin-left: -19px;
+}
+
+
+.dealers .tabs .btn
+{
+    font-size: 15px;
+    font-weight: 500;
+
+    display: block;
+
+    margin-bottom: 19px;
+    margin-left: 19px;
+    padding: 17px 35px;
+
+    transition: .2s linear;
+
+    border: 1px solid #bdbdbd;
+}
+
+
+.dealers .tabs .btn:hover,
+.dealers .tabs .btn.active
+{
+    color: #fff;
+    border-color: #000;
+    background: #000;
+}
+
+
+.dealers .city
+{
+    font-size: 22px;
+    font-weight: 700;
+
+    margin-bottom: 6px;
+
+    letter-spacing: .66px;
+
+    color: #000;
+}
+
+
+
+.dealers .item
+{
+    position: relative;
+
+    padding: 32px 31px 30px;
+
+    border: 1px solid #f2f2f2;
+    background: #fff;
+}
+
+
+.dealers .item + .item
+{
+    margin-top: 9px;
+}
+
+
+.dealers .item .name
+{
+    font-size: 19px;
+    font-weight: 600;
+
+    margin-bottom: 14px;
+    padding-right: 48px;
+
+    cursor: pointer;
+    letter-spacing: .57px;
+
+    color: #000;
+}
+
+
+.dealers .item .location
+{
+    line-height: 150%;
+
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.dealers .item .location .icon
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+
+    color: #ed1c24;
+}
+
+
+.dealers .item .location .icon svg
+{
+    display: block;
+
+    width: 14px;
+    height: 18px;
+}
+
+
+.dealers .item .location .icon + *
+{
+    width: calc(100% - 32px);
+}
+
+
+.dealers .item .phone
+{
+    font-weight: 600;
+
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin-top: 10px;
+}
+
+
+.dealers .item .phone .icon
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 18px;
+    height: 19px;
+    margin-top: 1px;
+
+    color: #ed1c24;
+}
+
+
+.dealers .item .phone .icon svg
+{
+    display: block;
+
+    width: 15px;
+    height: 19px;
+}
+
+
+.dealers .item .phone .icon + *
+{
+    width: calc(100% - 32px);
+}
+
+
+.dealers .item .phone a
+{
+    white-space: nowrap;
+    text-decoration: none;
+
+    color: currentColor;
+}
+
+
+.dealers .item .website
+{
+    line-height: 150%;
+
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin-top: 10px;
+
+    color: #ed1c24;
+}
+
+
+.dealers .item .website .icon
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 18px;
+    height: 19px;
+    margin-top: 1px;
+
+    color: #ed1c24;
+}
+
+
+.dealers .item .website .icon svg
+{
+    display: block;
+
+    width: 15px;
+    height: 19px;
+}
+
+
+.dealers .item .website .icon + *
+{
+    width: calc(100% - 32px);
+}
+
+
+.dealers .item .website a
+{
+    white-space: nowrap;
+    text-decoration: none;
+
+    color: currentColor;
+}
+
+
+.dealers .item .arr
+{
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 80px;
+    height: 80px;
+
+    cursor: pointer;
+    transition: color .2s linear;
+
+    color: #000;
+}
+
+
+.dealers .item .arr .icon
+{
+    display: block;
+
+    width: 35px;
+    height: 19px;
+
+    transition: transform .2s linear;
+}
+
+
+.dealers .item .arr:hover,
+.dealers .item .arr.active
+{
+    color: #ed1c24;
+}
+
+
+.dealers .item .arr.active .icon
+{
+    transform: rotate(180deg);
+}
+
+
+.dealers .item .map_wrap
+{
+    display: none;
+
+    margin-top: 29px;
+}
+
+
+.dealers .item .map
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 900px;
+    max-width: 100%;
+    height: 507px;
+    margin: 0 auto;
+
+    background: #d9d9d9;
 }
 
 

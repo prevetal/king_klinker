@@ -96,6 +96,64 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 
+	// Tabs
+	var locationHash = window.location.hash
+
+	$('body').on('click', '.tabs .btn', function(e) {
+		e.preventDefault()
+
+		if (!$(this).hasClass('active')) {
+			let parent = $(this).closest('.tabs_container'),
+				activeTab = $(this).data('content'),
+				activeTabContent = $(activeTab),
+				level = $(this).data('level')
+
+			parent.find('.tabs:first .btn').removeClass('active')
+			parent.find('.tab_content.' + level).removeClass('active')
+
+			$(this).addClass('active')
+			activeTabContent.addClass('active')
+		}
+	})
+
+	if (locationHash && $('.tabs_container').length) {
+		let activeTab = $(`.tabs button[data-content="${locationHash}"]`),
+			activeTabContent = $(locationHash),
+			parent = activeTab.closest('.tabs_container'),
+			level = activeTab.data('level')
+
+		parent.find('.tabs:first .btn').removeClass('active')
+		parent.find('.tab_content.' + level).removeClass('active')
+
+		activeTab.addClass('active')
+		activeTabContent.addClass('active')
+
+		$('html, body').stop().animate({ scrollTop: $activeTabContent.offset().top }, 1000)
+	}
+
+
+	// Catalog
+	$('.catalog_info .spoler_btn').click(function(e) {
+		e.preventDefault()
+
+		let parent = $(this).closest('.sub')
+
+		$(this).toggleClass('active')
+		parent.find('.hide').slideToggle(300)
+	})
+
+
+	// Dealers
+	$('.dealers .item .spoler_btn').click(function(e) {
+		e.preventDefault()
+
+		let parent = $(this).closest('.item')
+
+		$(this).find('spoler_btn').toggleClass('active')
+		parent.find('.map_wrap').slideToggle(300)
+	})
+
+
 	// Modals
 	$('.modal_btn').click(function(e) {
 		e.preventDefault()

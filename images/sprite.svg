@@ -2,6 +2,12 @@
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 13" id="ic_arr_hor">
     <path d="M6 1L1.61152 5.82733C1.26477 6.20875 1.26477 6.79125 1.61152 7.17267L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
   </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 9" id="ic_arr_ver">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.49991 8.12489L8.12489 6.49991L12.9998 1.625L11.3748 1.83655e-05L6.49991 4.87493L1.62498 0L0 1.62498L4.87494 6.49991L4.87492 6.49993L6.4999 8.12491L6.49991 8.12489Z" fill="currentColor"></path>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 19" id="ic_arr_ver2">
+    <path d="M1 1L17.5 17.5L34 1" stroke="currentColor" stroke-width="2"></path>
+  </symbol>
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 13" id="ic_arrow_hor">
     <path d="M1 6.78594L13 6.78594M13 6.78594L8.41485 1.98594M13 6.78594L8.41485 11.5859" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
@@ -31,5 +37,11 @@
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25" id="ic_search">
     <circle cx="12.0694" cy="11.085" r="10.585" stroke="currentColor"></circle>
     <line x1="19.8145" y1="19.0449" x2="25.357" y2="24.5874" stroke="currentColor"></line>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="ic_website">
+    <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"></circle>
+    <line x1="0.84375" y1="7.67188" x2="15.1595" y2="7.67188" stroke="currentColor" stroke-width="1.5"></line>
+    <path d="M2.53125 2.52734C6.88192 4.81407 9.20615 4.73147 13.4786 2.52734" stroke="currentColor" stroke-width="1.5"></path>
+    <path d="M2.53125 12.6328C6.88192 10.3461 9.20615 10.4287 13.4786 12.6328" stroke="currentColor" stroke-width="1.5"></path>
   </symbol>
 </svg>

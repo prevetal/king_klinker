@@ -26,7 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev'
 			},
-			lazy: true
+			lazy: true,
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			}
 		})
 	}
 

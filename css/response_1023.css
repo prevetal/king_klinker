@@ -58,6 +58,7 @@
 
         transition: transform .3s linear;
 
+        color: var(--text_color);
         background: #fff;
     }
 
